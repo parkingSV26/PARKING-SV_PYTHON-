@@ -1,29 +1,103 @@
-# Parking SV — Python
+# Parking SV — Prototipo de escritorio en Python
 
 [English](README.md) | [Español](README.es.md)
 
-Este repositorio contiene el proyecto de Parking SV basado en Python. Se mantiene por separado de la aplicación web desarrollada con Next.js.
+## Descripción general
 
-## Proyectos relacionados
+Este repositorio contiene un prototipo independiente de escritorio en Python relacionado con Parking SV. Explora cómo presentar una experiencia de descubrimiento de parqueos dentro de una aplicación de escritorio utilizando **BeeWare Toga** y una vista web integrada.
 
-- **Demo web pública de Parking SV:** https://parkingsv.vercel.app/
-- **Aplicación web Next.js:** https://github.com/parkingSV26/parkingsv-web
-- **Repositorio Python:** https://github.com/parkingSV26/PARKING-SV_PYTHON-
+Es una base de código distinta de la aplicación web Parking SV desarrollada con Next.js. Ambos repositorios tienen implementaciones e historiales separados.
 
-## Acerca de este repositorio
+## Qué incluye el prototipo
 
-Este repositorio es el espacio del proyecto en Python asociado con Parking SV. Es independiente de la aplicación web Next.js y cuenta con su propio historial de código.
+- Pantallas de bienvenida, navegación y página principal.
+- Formularios visuales de inicio de sesión y registro.
+- Catálogo de parqueos con búsqueda de texto sobre registros de ejemplo predefinidos.
+- Fichas de parqueos con horarios, tarifas, descripciones, imágenes, servicios y restricciones de muestra.
+- Pantallas de perfil, notificaciones, contacto y planes.
+- Enlaces de navegación externa, incluidos enlaces de Waze asociados a parqueos de ejemplo.
 
-La demo web pública es el punto de partida recomendado para quienes desean explorar Parking SV en línea. El repositorio Python se ofrece como una base de código separada para consulta técnica.
+La interfaz está principalmente en español y utiliza una maquetación adaptable al área de la vista web integrada.
 
-## Instalación y ejecución
+## Cómo funciona
 
-Los comandos exactos de instalación y ejecución dependen del punto de entrada y de las dependencias presentes en este repositorio. Revisa los archivos fuente y los manifiestos de dependencias antes de ejecutarlo. No asumas que las instrucciones de Next.js aplican a esta base de código Python.
+La capa Python actúa como una envoltura ligera de escritorio:
 
-## Contribuciones y atribución
+1. **Parking_SV/__main__.py** inicia la aplicación.
+2. **Parking_SV/app.py** crea una ventana MainWindow de Toga.
+3. La aplicación lee **resources/Index.html** desde los recursos empaquetados.
+4. Un componente WebView de Toga muestra la interfaz HTML dentro de la ventana de la aplicación.
+5. JavaScript incluido en el HTML cambia entre pantallas, filtra la lista local de parqueos de ejemplo y muestra sus detalles.
 
-Parking SV ha involucrado trabajo en implementaciones separadas y contribuciones de equipo. Enlazar este repositorio no significa que todos los colaboradores de la aplicación web también hayan implementado esta base de código Python.
+La interfaz visual está implementada en un único recurso HTML con CSS y JavaScript integrados. **pyproject.toml** contiene los metadatos de empaquetado de Briefcase y las dependencias de Toga para cada plataforma.
 
-## Idioma
+## Límites del prototipo
 
-La documentación en inglés está disponible en [README.md](README.md).
+Este repositorio debe evaluarse como un prototipo de interfaz e integración de escritorio, no como un servicio de parqueos en funcionamiento.
+
+- Los parqueos están predefinidos en el frontend; no se consultan desde una API de producción.
+- La búsqueda filtra la lista local de ejemplos.
+- Las pantallas de inicio de sesión y registro no autentican usuarios ni crean cuentas.
+- Las reservas, la disponibilidad y las notificaciones son ejemplos sin conexión a un servicio real.
+- El formulario de contacto no envía mensajes.
+- Esta base de código no implementa pagos, inventario en tiempo real, servidor de aplicación ni integración con una base de datos.
+
+Los nombres, precios, datos de contacto, imágenes y descripciones que aparecen en la interfaz son contenido de muestra y no deben considerarse información comercial verificada.
+
+## Tecnologías
+
+- Python 3
+- BeeWare Toga
+- Briefcase
+- Toga WebView
+- HTML5, CSS3 y JavaScript
+
+## Ejecución en modo desarrollo
+
+El proyecto Briefcase se encuentra dentro del directorio **Parking-SV/**.
+
+~~~bash
+cd Parking-SV
+python -m venv .venv
+~~~
+
+Activa el entorno:
+
+**Windows PowerShell**
+~~~powershell
+.venv\Scripts\Activate.ps1
+~~~
+
+**Linux / macOS**
+~~~bash
+source .venv/bin/activate
+~~~
+
+Instala Briefcase y ejecuta la aplicación en modo desarrollo:
+
+~~~bash
+python -m pip install briefcase
+briefcase dev
+~~~
+
+Las dependencias nativas necesarias varían según el sistema operativo. La configuración específica de cada plataforma está declarada en **pyproject.toml**.
+
+## Estructura del código
+
+~~~text
+Parking-SV/
+├── pyproject.toml
+├── src/Parking_SV/
+│   ├── __main__.py
+│   ├── app.py
+│   └── resources/
+│       └── Index.html
+└── tests/
+~~~
+
+## Proyecto relacionado
+
+- [Parking SV — Aplicación web Next.js](https://github.com/parkingSV26/parkingsv-web)
+- [Experiencia web pública de Parking SV](https://parkingsv.vercel.app/)
+
+El prototipo Python es una referencia de implementación separada. Su funcionalidad y sus colaboradores no deben confundirse con los de la aplicación Next.js.
