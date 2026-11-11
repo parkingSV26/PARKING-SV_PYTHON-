@@ -1,2 +1,5 @@
-Put any application resources (e.g., icons and resources) here;
-they can be referenced in code as "resources/filename".
+# Application resources
+
+This directory contains the files loaded by the Parking SV desktop application. The main interface is **Index.html**, which app.py reads at startup and displays inside a Toga WebView.
+
+Keeping the HTML resource alongside its related images and other static assets allows Briefcase to package the interface with the desktop application.
